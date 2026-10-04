@@ -29,6 +29,8 @@ tool calls and returns a fit card — in at least 4 of 5 tries.
      "my search is a plain keyword match and some phrasings will miss" is a
      real answer. -->
 
+
+
 ---
 
 ## 2. An impossible query stops before the second tool
@@ -39,10 +41,11 @@ Given a query that matches no listings, the agent stops before calling
 **Why this target:**
 <!-- Why is 5 of 5 reasonable here when criterion 1 isn't? What's different
      about this path? -->
+This is the target since the next fucntion each depends on the answer it gives. So we need to make sure we get a answer for this function. 
 
 ---
 
-## 3. Something about state
+## 3. Given a query that matches at least one listing, the id passed into suggest_outfit equals session["selected_item"]["id"] — in 5 of 5 tries.
 
 <!-- YOU WRITE THIS ONE.
 
@@ -56,13 +59,13 @@ Given a query that matches no listings, the agent stops before calling
 
 
 
-**Why this target:**
+**Why this target:** This target ensures that each step receives the correct information, since passing an incorrect or mismatched ID to the next tool could impact its output or cause downstream errors.
 
 
 
 ---
 
-## 4. Something about the fit card
+## 4. For 5 different listings, the 5 fit cards share no opening sentence. 
 
 <!-- YOU WRITE THIS ONE.
 
@@ -77,13 +80,16 @@ Given a query that matches no listings, the agent stops before calling
 
 
 
-**Why this target:**
+
+
+
+**Why this target:** this makes sure the starting for different listing is unique and not repeated.  
 
 
 
 ---
 
-## 5. Your choice
+## 5. For 5 queries that name a maximum price, every listing in session["search_results"] has price less than or equal to that number for 5 of 5 tries.
 
 <!-- YOU WRITE THIS ONE TOO.
 
@@ -94,7 +100,7 @@ Given a query that matches no listings, the agent stops before calling
 
 
 
-**Why this target:**
+**Why this target:** this tests if the cursotmer is getting the right based on the filter they set. 
 
 
 
