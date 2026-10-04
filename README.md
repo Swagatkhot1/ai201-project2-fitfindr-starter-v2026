@@ -59,24 +59,24 @@
 
 ### `search_listings`
 
-- **What it does:**
-- **Inputs:** <!-- name and type each: `max_price` (float), not "a price" -->
-- **Returns:**
-- **When it has nothing:**
+- **What it does:** Searches the listings to find items that best match the user's needs. It first filters results by maximum price and size, then finds the listings that most closely match the given description.
+- **Inputs:** description (str), size (str or None), max_price (float or None)
+- **Returns:**  list dict with (id, title, description, category, style_tags (list), size, condition, price (float), colors (list), brand (str or None), platform size, and price criteria.) 
+- **When it has nothing:** Returns an empty list if no items match the criteria.
 
 ### `suggest_outfit`
 
-- **What it does:**
-- **Inputs:**
-- **Returns:**
-- **When it has nothing:**
+- **What it does:** Generates an outfit suggestion by taking the new_item and, if available, combining it with items from the wardrobe using prompts.
+- **Inputs:** new_item (dict), wardrobe (dict)
+- **Returns:** Returns a one-line outfit suggestion (str).
+- **When it has nothing:** If there is no wardrobe, it provides general styling advice.
 
 ### `create_fit_card`
 
-- **What it does:**
-- **Inputs:**
-- **Returns:**
-- **When it has nothing:**
+- **What it does:** writes a caption based on both outfit suggestion  and new_item put in. 
+- **Inputs:**outfit(str), new_item(dict)
+- **Returns:** 2-4 sentences caption
+- **When it has nothing:**  it returns descriptive message;. 
 
 ---
 
