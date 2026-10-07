@@ -82,7 +82,7 @@ Given a query that matches no listings, the agent stops before calling
 
 
 
-**Why this target:** create_fit_card calls the model, and TEMPERATURE or CACHE_ENABLED in config.py could make different items produce the same opening. That names your tool and your settings.  
+**Why this target:** create_fit_card calls the model, and TEMPERATURE or CACHE_ENABLED in config.py could make different items produce the same opening..  
 
 
 
