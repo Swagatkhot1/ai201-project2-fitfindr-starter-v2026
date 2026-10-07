@@ -40,9 +40,7 @@
 ## What This Does
 
 <!-- Three or four sentences: what a user asks for, and what they get back. -->
-
-
-
+The user describes what they're looking for in plain words: the type of item (like jeans or a graphic tee), the style, the size and a maximum price. For example: "vintage graphic tee, size M, under $30." FitFindr searches thrift listings from Depop, thredUp and Poshmark and finds the item that best matches the description. It then suggests outfits that pair the item with clothes from the user's wardrobe, and writes a short caption they could post about the find. If nothing matches, it says so and suggests what to change in the search.
 ---
 
 ## Tool Inventory
@@ -61,22 +59,22 @@
 
 - **What it does:** Searches the listings to find items that best match the user's needs. It first filters results by maximum price and size, then finds the listings that most closely match the given description.
 - **Inputs:** description (str), size (str or None), max_price (float or None)
-- **Returns:**  list dict with (id, title, description, category, style_tags (list), size, condition, price (float), colors (list), brand (str or None), platform size, and price criteria.) 
+- **Returns:** A list of listing dicts (each with id, title, description, category, style_tags, size, condition, price, colors, brand, platform), best keyword match first, at most config.SEARCH_RESULT_LIMIT items.
 - **When it has nothing:** Returns an empty list if no items match the criteria.
 
 ### `suggest_outfit`
 
 - **What it does:** Generates an outfit suggestion by taking the new_item and, if available, combining it with items from the wardrobe using prompts.
 - **Inputs:** new_item (dict), wardrobe (dict)
-- **Returns:** Returns a one-line outfit suggestion (str).
-- **When it has nothing:** If there is no wardrobe, it provides general styling advice.
+- **Returns:** A non-empty string (str) with one or two outfit suggestions that pair the new item with specific pieces from the user's wardrobe.
+- **When it has nothing:** If wardrobe["items"] is empty, it still returns a non-empty string, with general styling advice for the item instead of specific pairings. It never returns "" or raises an error.
 
 ### `create_fit_card`
 
 - **What it does:** writes a caption based on both outfit suggestion  and new_item put in. 
-- **Inputs:**outfit(str), new_item(dict)
-- **Returns:** 2-4 sentences caption
-- **When it has nothing:**  it returns descriptive message;. 
+- **Inputs:** outfit (str), new_item (dict)
+- **Returns:** A 2–4 sentence caption (str) written like a real social media post, mentioning the item, its price and its platform once each.
+- **When it has nothing:** If outfit is empty or only whitespace, it returns a message string saying no outfit was provided, instead of calling the model or raising an error.
 
 ---
 

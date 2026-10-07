@@ -82,7 +82,7 @@ Given a query that matches no listings, the agent stops before calling
 
 
 
-**Why this target:** create_fit_card calls the model, and TEMPERATURE or CACHE_ENABLED in config.py could make different items produce the same opening..  
+**Why this target:** create_fit_card calls the model, and TEMPERATURE or CACHE_ENABLED in config.py could make different items produce the same opening.  
 
 
 
@@ -99,7 +99,7 @@ Given a query that matches no listings, the agent stops before calling
 
 
 
-**Why this target:** the price filter is a <= comparison in search_listings, so any listing over the limit means a bug in your code, not bad luck. That explains why 5 of 5 is the right target. 
+**Why this target:** The price filter is a <= comparison in search_listings, so any listing over the limit means a bug in my code, not bad luck.
 
 
 
