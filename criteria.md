@@ -28,8 +28,7 @@ tool calls and returns a fit card — in at least 4 of 5 tries.
 <!-- Why 4 of 5 and not 5 of 5? Something about your search, probably —
      "my search is a plain keyword match and some phrasings will miss" is a
      real answer. -->
-
-
+My search is a plain keyword match, so some phrasings won't match any listing even when a good item exists.
 
 ---
 
@@ -41,7 +40,7 @@ Given a query that matches no listings, the agent stops before calling
 **Why this target:**
 <!-- Why is 5 of 5 reasonable here when criterion 1 isn't? What's different
      about this path? -->
-This is the target since the next fucntion each depends on the answer it gives. So we need to make sure we get a answer for this function. 
+5 of 5, because the branch is a simple if not results check in run_agent, with no model involved, so it should never vary.
 
 ---
 
@@ -83,7 +82,7 @@ This is the target since the next fucntion each depends on the answer it gives. 
 
 
 
-**Why this target:** this makes sure the starting for different listing is unique and not repeated.  
+**Why this target:** create_fit_card calls the model, and TEMPERATURE or CACHE_ENABLED in config.py could make different items produce the same opening. That names your tool and your settings.  
 
 
 
@@ -100,7 +99,7 @@ This is the target since the next fucntion each depends on the answer it gives. 
 
 
 
-**Why this target:** this tests if the cursotmer is getting the right based on the filter they set. 
+**Why this target:** the price filter is a <= comparison in search_listings, so any listing over the limit means a bug in your code, not bad luck. That explains why 5 of 5 is the right target. 
 
 
 

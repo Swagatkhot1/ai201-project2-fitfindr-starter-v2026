@@ -79,7 +79,21 @@ def search_listings(
         python -c "from tools import search_listings; print(search_listings('graphic tee', max_price=30))"
     """
     # TODO: replace this with your implementation
-    return []
+    results = []
+    listings = load_listings()
+    for item in listings:
+        if max_price is not None and item['price'] > max_price:
+            continue
+        results.append(item)
+        if size is not None and item['size'] != size:
+            continue
+        if description not in item['description']:
+            continue
+        score = 0
+        for keyword in description.split():
+            if keyword in item['description']:
+
+
 
 
 # ── Tool 2: suggest_outfit ────────────────────────────────────────────────────
